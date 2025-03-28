@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro - Minimercado</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <header class="bg-light p-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1>Minimercado</h1>
+            <nav>
+                <ul class="list-unstyled d-flex gap-3 mb-0">
+                    <li><a href="index.html" class="btn btn-outline-secondary">Início</a></li>
+                    <li><a href="produtos.html" class="btn btn-outline-secondary">Produtos</a></li>
+                    <li><a href="servicos.html" class="btn btn-outline-secondary">Serviços</a></li>
+                    <li><a href="contato.html" class="btn btn-outline-secondary">Contato</a></li>
+                    <li><a href="carrinho.html" class="btn btn-outline-secondary">Carrinho</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <h2 class="text-center">Cadastro de Cliente</h2>
+        <form id="cadastro-form">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" id="nome" class="form-control" placeholder="Seu nome completo" required>
+            </div>
+            <div class="mb-3">
+                <label for="endereco" class="form-label">Endereço:</label>
+                <input type="text" id="endereco" class="form-control" placeholder="Seu endereço completo" required>
+            </div>
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF:</label>
+                <input type="text" id="cpf" class="form-control" placeholder="Seu CPF" required>
+            </div>
+            <div class="mb-3">
+                <label for="sexo" class="form-label">Sexo:</label>
+                <select id="sexo" class="form-control" required>
+                    <option value="">Escolha uma opção</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone:</label>
+                <input type="tel" id="telefone" class="form-control" placeholder="Seu telefone" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail:</label>
+                <input type="email" id="email" class="form-control" placeholder="Seu e-mail" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+    <script>
+    document.getElementById("cadastro-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let nome = document.getElementById("nome").value.trim();
+        let endereco = document.getElementById("endereco").value.trim();
+        let cpf = document.getElementById("cpf").value.trim();
+        let sexo = document.getElementById("sexo").value;
+        let telefone = document.getElementById("telefone").value.trim();
+        let email = document.getElementById("email").value.trim();
+
+        if (nome === "" || endereco === "" || cpf === "" || sexo === "" || telefone === "" || email === "") {
+            alert("Por favor, preencha todos os campos.");
+        } else {
+            // Simula o cadastro bem-sucedido e armazena a informação no localStorage
+            alert("Cadastro realizado com sucesso!");
+
+            // Salva no localStorage que o cliente está cadastrado
+            localStorage.setItem('clienteCadastrado', 'true');
+
+            // Redireciona automaticamente para a página de produtos
+            window.location.href = "produtos.html";
+        }
+    });
+    </script>
+
+</body>
+</html>

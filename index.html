@@ -2,47 +2,48 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Minimercado</title>
-    <!-- Style ( Selecoes ficam do lado uma da outra inves de uma embaixo da outra.) -->
-    <style> 
-        nav ul {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-
 <body>
 
-<!-- Cabeçalho -->
-<header>
-    <h1>Minimercado</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="produtos.html">Produtos</a></li>
-            <li><a href="servicos.html">Serviços</a></li>
-            <li><a href="contato.html">Contato</a></li>
-        </ul>
-    </nav>
-</header>
+    <header class="bg-light p-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1>Minimercado</h1>
+            <nav>
+                <ul class="list-unstyled d-flex gap-3 mb-0">
+                    <!-- O botão de contato sempre ficará visível -->
+                    <li><a href="contato.html" class="btn btn-outline-secondary">Contato</a></li>
 
-<!-- Corpo da Página -->
-<main>
-    <h2>Bem-vindo ao nosso minimercado!</h2>
-    <p>Seu mercado virtual! Aqui voce podera escolher qualquer produto que será entregue diretamente na sua residencia.</p>
-</main>
+                    <!-- Botões que só aparecerão após o cadastro -->
+                    <li id="produtosBtn" style="display:none;"><a href="produtos.html" class="btn btn-outline-secondary">Produtos</a></li>
+                    <li id="servicosBtn" style="display:none;"><a href="servicos.html" class="btn btn-outline-secondary">Serviços</a></li>
+                    <li id="carrinhoBtn" style="display:none;"><a href="carrinho.html" class="btn btn-outline-secondary">Carrinho</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<!-- Rodapé -->
-<footer>
-    <p>&copy; 2025 Minimercado - Todos os direitos reservados.</p>
-</footer>
+    <div class="container mt-4">
+        <h2 class="text-center">Bem-vindo ao Minimercado!</h2>
+        <p class="text-center">Para acessar os produtos, serviços e carrinho, você precisa se cadastrar. <strong>É rápido e fácil!</strong></p>
+
+        <!-- Botão para acessar o cadastro -->
+        <div class="text-center mt-4">
+            <a href="cadastro.html" class="btn btn-primary">Cadastrar</a>
+        </div>
+    </div>
+
+    <script>
+        // Verifica se o cliente está cadastrado
+        if (localStorage.getItem('clienteCadastrado')) {
+            // Exibe os botões de navegação após o cadastro
+            document.getElementById('produtosBtn').style.display = 'inline-block';
+            document.getElementById('servicosBtn').style.display = 'inline-block';
+            document.getElementById('carrinhoBtn').style.display = 'inline-block';
+        }
+    </script>
 
 </body>
 </html>
